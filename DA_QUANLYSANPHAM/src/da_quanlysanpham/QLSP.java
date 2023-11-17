@@ -27,4 +27,8 @@ public class QLSP {
     ArrayList<SanPham> getListSP(){
         return listSP;
     }
+    Boolean themSP(SanPham sp) {
+        listSP.add(sp);
+        return true;
+    }
 }

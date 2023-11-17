@@ -115,15 +115,15 @@ public class GiaoDien extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnThem.setText("Thêm");
+        btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemMouseClicked(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
 
         btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 204)));
 
@@ -395,10 +395,23 @@ public class GiaoDien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+    private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnXoaActionPerformed
-
+        String ma = txtMaSP.getText();
+        String ten = txtTenSP.getText();
+        Integer gia = Integer.valueOf(txtGia.getText());
+        Integer sl = Integer.valueOf(txtSoLuong.getText());
+        String trangThai = "";
+        if (rdMoi.isSelected()) {
+            trangThai = "Mới";
+        } else {
+            trangThai = "Cũ";
+        }
+        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
+        Boolean checkAdd = qlsp.themSP(sanPham);
+        loadData(qlsp.getListSP());
+    }//GEN-LAST:event_btnThemMouseClicked
+    
     /**
      * @param args the command line arguments
      */

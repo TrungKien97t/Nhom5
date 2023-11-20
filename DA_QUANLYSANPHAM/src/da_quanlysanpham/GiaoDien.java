@@ -5,6 +5,7 @@
 package da_quanlysanpham;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,13 +19,16 @@ public class GiaoDien extends javax.swing.JFrame {
      */
     DefaultTableModel dtm;
     QLSP qlsp = new QLSP();
+    ArrayList<SanPham> list;
+
     public GiaoDien() {
         initComponents();
-        ArrayList<SanPham> list = qlsp.getListSP();
+        list = qlsp.getListSP();
         loadData(list);
     }
-    void loadData(ArrayList<SanPham> list){
-        int i= 1;
+
+    void loadData(ArrayList<SanPham> list) {
+        int i = 1;
         dtm = (DefaultTableModel) tblSanPham.getModel();
         dtm.setRowCount(0);
         for (SanPham sanPham : list) {
@@ -38,6 +42,7 @@ public class GiaoDien extends javax.swing.JFrame {
             });
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +107,11 @@ public class GiaoDien extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblSanPham);
         if (tblSanPham.getColumnModel().getColumnCount() > 0) {
             tblSanPham.getColumnModel().getColumn(0).setResizable(false);
@@ -122,6 +132,11 @@ public class GiaoDien extends javax.swing.JFrame {
         });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
 
@@ -409,9 +424,52 @@ public class GiaoDien extends javax.swing.JFrame {
         }
         SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
         Boolean checkAdd = qlsp.themSP(sanPham);
-        loadData(qlsp.getListSP());
+        if (checkAdd) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
+            loadData(qlsp.getListSP());
+        }
     }//GEN-LAST:event_btnThemMouseClicked
-    
+
+    private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
+        // TODO add your handling code here:
+        int row = tblSanPham.getSelectedRow();
+        String ma = (String) tblSanPham.getValueAt(row, 1);
+        txtMaSP.setText(ma);
+        String ten = (String) tblSanPham.getValueAt(row, 2);
+        txtTenSP.setText(ten);
+        Double gia = (Double) tblSanPham.getValueAt(row, 3);
+        txtGia.setText(gia + "");
+        Integer sl = (Integer) tblSanPham.getValueAt(row, 4);
+        txtSoLuong.setText(sl + "");
+        String trangThai = (String) tblSanPham.getValueAt(row, 5);
+        if (trangThai.equals("Cũ")) {
+            rdCu.setSelected(true);
+        } else {
+            rdMoi.setSelected(true);
+        }
+    }//GEN-LAST:event_tblSanPhamMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        int i = tblSanPham.getSelectedRow();
+        String ma = txtMaSP.getText();
+        String ten = txtTenSP.getText();
+        Integer gia = Integer.valueOf(txtGia.getText());
+        Integer sl = Integer.valueOf(txtSoLuong.getText());
+        String trangThai = "";
+        if (rdMoi.isSelected()) {
+            trangThai = "Mới";
+        } else {
+            trangThai = "Cũ";
+        }
+        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
+        Boolean checkUpdate = qlsp.suaSP(i, sanPham);
+        if (checkUpdate) {
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
+            loadData(qlsp.getListSP());
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+
     /**
      * @param args the command line arguments
      */

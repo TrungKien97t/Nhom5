@@ -31,4 +31,8 @@ public class QLSP {
         listSP.add(sp);
         return true;
     }
+    Boolean suaSP(int i, SanPham spNew){
+        listSP.set(i, spNew);
+        return true;
+    }
 }

@@ -20,13 +20,13 @@ public class GiaoDien extends javax.swing.JFrame {
     DefaultTableModel dtm;
     QLSP qlsp = new QLSP();
     ArrayList<SanPham> list;
-
+    
     public GiaoDien() {
         initComponents();
         list = qlsp.getListSP();
         loadData(list);
     }
-
+    
     void loadData(ArrayList<SanPham> list) {
         int i = 1;
         dtm = (DefaultTableModel) tblSanPham.getModel();
@@ -139,6 +139,11 @@ public class GiaoDien extends javax.swing.JFrame {
         });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 204)));
 
@@ -469,6 +474,16 @@ public class GiaoDien extends javax.swing.JFrame {
             loadData(qlsp.getListSP());
         }
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int row = tblSanPham.getSelectedRow();
+        Boolean checkDelete = qlsp.xoaSP(row);
+        if (checkDelete) {
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            loadData(qlsp.getListSP());
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments

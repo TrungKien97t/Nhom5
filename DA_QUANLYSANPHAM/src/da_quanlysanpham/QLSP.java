@@ -11,8 +11,10 @@ import java.util.ArrayList;
  * @author Hi Windows 10
  */
 public class QLSP {
+
     ArrayList<SanPham> listSP = new ArrayList<>();
-    public QLSP(){
+
+    public QLSP() {
         listSP.add(new SanPham("SP001", "Bia Hà Nội", 12000.0, 73, "Cũ"));
         listSP.add(new SanPham("SP002", "Mì 3 Miền", 3500.0, 370, "Cũ"));
         listSP.add(new SanPham("SP003", "Mì Kokomi", 3000.0, 100, "Mới"));
@@ -24,15 +26,23 @@ public class QLSP {
         listSP.add(new SanPham("SP009", "Bim Bim", 5000.0, 90, "Mới"));
         listSP.add(new SanPham("SP010", "Dầu Ăn Simply", 50000.0, 40, "Mới"));
     }
-    ArrayList<SanPham> getListSP(){
+
+    ArrayList<SanPham> getListSP() {
         return listSP;
     }
+
     Boolean themSP(SanPham sp) {
         listSP.add(sp);
         return true;
     }
-    Boolean suaSP(int i, SanPham spNew){
+
+    Boolean suaSP(int i, SanPham spNew) {
         listSP.set(i, spNew);
+        return true;
+    }
+
+    Boolean xoaSP(int viTri) {
+        listSP.remove(viTri);
         return true;
     }
 }

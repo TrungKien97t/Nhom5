@@ -45,4 +45,14 @@ public class QLSP {
         listSP.remove(viTri);
         return true;
     }
+
+    ArrayList<SanPham> search(String maCanTim) {
+        ArrayList<SanPham> listKetQua = new ArrayList<>();
+        for (SanPham sp : listSP) {
+            if (sp.getMa().equals(maCanTim)) {
+                listKetQua.add(sp);
+            }
+        }
+        return listKetQua;
+    }
 }

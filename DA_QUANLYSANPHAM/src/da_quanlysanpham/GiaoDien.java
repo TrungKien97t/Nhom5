@@ -20,13 +20,14 @@ public class GiaoDien extends javax.swing.JFrame {
     DefaultTableModel dtm;
     QLSP qlsp = new QLSP();
     ArrayList<SanPham> list;
-    
+
     public GiaoDien() {
         initComponents();
         list = qlsp.getListSP();
+        setLocationRelativeTo(null);
         loadData(list);
     }
-    
+
     void loadData(ArrayList<SanPham> list) {
         int i = 1;
         dtm = (DefaultTableModel) tblSanPham.getModel();

@@ -65,5 +65,8 @@ public class SanPham {
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
+    public static void main(String[] args) {
+        System.out.println("TÚ");
+    }
 
 }

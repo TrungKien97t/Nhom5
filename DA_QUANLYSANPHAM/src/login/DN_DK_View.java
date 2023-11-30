@@ -37,10 +37,15 @@ public class DN_DK_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Tên đăng nhập:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Mật khẩu:");
 
+        btnDangKy.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDangKy.setText("Đăng kí");
         btnDangKy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,7 +53,14 @@ public class DN_DK_View extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nhập lại mật khẩu:");
+
+        txtDKUsn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        txtDKPwd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        txtDKPwd2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +84,7 @@ public class DN_DK_View extends javax.swing.JFrame {
                             .addComponent(txtDKUsn, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                             .addComponent(txtDKPwd)
                             .addComponent(txtDKPwd2))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,7 +97,7 @@ public class DN_DK_View extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDKPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtDKPwd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -94,12 +106,19 @@ public class DN_DK_View extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        jTabbedPane1.addTab("Đăng kí", jPanel1);
+        jTabbedPane1.addTab("Đăng kí ", jPanel1);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Tên đăng nhập:");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Mật khẩu:");
 
+        txtDNUsn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        txtDNPwd.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
         btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +144,7 @@ public class DN_DK_View extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(163, 163, 163)
                         .addComponent(btnDangNhap)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +159,7 @@ public class DN_DK_View extends javax.swing.JFrame {
                     .addComponent(txtDNPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(btnDangNhap)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Đăng nhập", jPanel2);
@@ -150,16 +169,16 @@ public class DN_DK_View extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jTabbedPane1)
-                .addGap(18, 18, 18))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -169,6 +188,10 @@ public class DN_DK_View extends javax.swing.JFrame {
         String usn = txtDKUsn.getText();
         String pwd = txtDKPwd.getText();
         String cpwd = txtDKPwd2.getText();
+        if (usn.isEmpty() || pwd.isEmpty() || cpwd.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không được bỏ trống");
+            return ;
+        }
         if (!cpwd.equals(pwd)) {
             JOptionPane.showMessageDialog(this, "Nhập lại mật khẩu sai !");
         } else {

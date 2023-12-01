@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package da_quanlysanpham;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Hi Windows 10
- */
 public class GiaoDien extends javax.swing.JFrame {
 
     /**
@@ -256,10 +248,10 @@ public class GiaoDien extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,20 +417,57 @@ public class GiaoDien extends javax.swing.JFrame {
         // TODO add your handling code here:
         String ma = txtMaSP.getText();
         String ten = txtTenSP.getText();
-        Integer gia = Integer.valueOf(txtGia.getText());
-        Integer sl = Integer.valueOf(txtSoLuong.getText());
+        String gia = txtGia.getText();
+        String sl = txtSoLuong.getText();
         String trangThai = "";
         if (rdMoi.isSelected()) {
             trangThai = "Mới";
         } else {
             trangThai = "Cũ";
         }
-        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
-        Boolean checkAdd = qlsp.themSP(sanPham);
-        if (checkAdd) {
-            JOptionPane.showMessageDialog(this, "Thêm thành công");
-            loadData(qlsp.getListSP());
+        try {
+            if (txtMaSP.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống mã");
+                return;
+            }
+
+            if (txtTenSP.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tên");
+                return;
+
+            }
+            if (txtGia.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống giá");
+                return;
+            }
+            Double giax = Double.valueOf(txtGia.getText());
+            if (giax < 0) {
+                JOptionPane.showMessageDialog(this, "Giá phải là số dương");
+                return;
+            }
+            if (txtSoLuong.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống số lượng");
+                return;
+            }
+            Integer sluong = Integer.valueOf(txtSoLuong.getText());
+            if (sluong <= 0) {
+                JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0");
+                return;
+            }
+            if (!rdMoi.isSelected() && !rdCu.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Chưa chọn trạng thái");
+                return;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Giá và số lượng phải là số");
+            return;
         }
+        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
+        qlsp.themSP(sanPham);
+        JOptionPane.showMessageDialog(this, "Thêm thành công");
+        loadData(qlsp.getListSP());
+
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
@@ -448,9 +477,9 @@ public class GiaoDien extends javax.swing.JFrame {
         txtMaSP.setText(ma);
         String ten = (String) tblSanPham.getValueAt(row, 2);
         txtTenSP.setText(ten);
-        Double gia = (Double) tblSanPham.getValueAt(row, 3);
+        String gia = (String) tblSanPham.getValueAt(row, 3);
         txtGia.setText(gia + "");
-        Integer sl = (Integer) tblSanPham.getValueAt(row, 4);
+        String sl = (String) tblSanPham.getValueAt(row, 4);
         txtSoLuong.setText(sl + "");
         String trangThai = (String) tblSanPham.getValueAt(row, 5);
         if (trangThai.equals("Cũ")) {
@@ -465,37 +494,82 @@ public class GiaoDien extends javax.swing.JFrame {
         int i = tblSanPham.getSelectedRow();
         String ma = txtMaSP.getText();
         String ten = txtTenSP.getText();
-        Integer gia = Integer.valueOf(txtGia.getText());
-        Integer sl = Integer.valueOf(txtSoLuong.getText());
+        String gia = txtGia.getText();
+        String sl = txtSoLuong.getText();
         String trangThai = "";
         if (rdMoi.isSelected()) {
             trangThai = "Mới";
         } else {
             trangThai = "Cũ";
         }
-        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
-        Boolean checkUpdate = qlsp.suaSP(i, sanPham);
-        if (checkUpdate) {
-            JOptionPane.showMessageDialog(this, "Sửa thành công");
-            loadData(qlsp.getListSP());
+        try {
+            if (txtMaSP.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống mã");
+                return;
+            }
+
+            if (txtTenSP.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tên");
+                return;
+
+            }
+            if (txtGia.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống giá");
+                return;
+            }
+            Double giax = Double.valueOf(txtGia.getText());
+            if (giax < 0) {
+                JOptionPane.showMessageDialog(this, "Giá phải là số dương");
+                return;
+            }
+            if (txtSoLuong.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống số lượng");
+                return;
+            }
+            Integer sluong = Integer.valueOf(txtSoLuong.getText());
+            if (sluong <= 0) {
+                JOptionPane.showMessageDialog(this, "Số lượng phải lớn hơn 0");
+                return;
+            }
+            if (!rdMoi.isSelected() && !rdCu.isSelected()) {
+                JOptionPane.showMessageDialog(this, "Chưa chọn trạng thái");
+                return;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Giá và số lượng phải là số");
+            return;
         }
+        SanPham sanPham = new SanPham(ma, ten, gia, sl, trangThai);
+        qlsp.suaSP(i, sanPham);
+        JOptionPane.showMessageDialog(this, "Sửa thành công");
+        loadData(qlsp.getListSP());
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int row = tblSanPham.getSelectedRow();
-        Boolean checkDelete = qlsp.xoaSP(row);
-        if (checkDelete) {
+        if (row >= 0) {
             JOptionPane.showMessageDialog(this, "Xóa thành công");
+            qlsp.xoaSP(row);
             loadData(qlsp.getListSP());
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng để xóa");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
         String maCanTim = txtSearch.getText();
+        if (maCanTim.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập mã cần tìm");
+            return;
+        }
         ArrayList<SanPham> ketQua = qlsp.search(maCanTim);
         loadData(ketQua);
+        if (ketQua.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sản phẩm ko tồn tại");
+        }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     /**

@@ -1,24 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package da_quanlysanpham;
 
-/**
- *
- * @author Hi Windows 10
- */
 public class SanPham {
 
     private String ma, tenSP;
-    private double gia;
-    private int soLuong;
+    private String gia;
+    private String soLuong;
     private String trangThai;
 
     public SanPham() {
     }
 
-    public SanPham(String ma, String tenSP, double gia, int soLuong, String trangThai) {
+    public SanPham(String ma, String tenSP, String gia, String soLuong, String trangThai) {
         this.ma = ma;
         this.tenSP = tenSP;
         this.gia = gia;
@@ -42,19 +34,19 @@ public class SanPham {
         this.tenSP = tenSP;
     }
 
-    public double getGia() {
+    public String getGia() {
         return gia;
     }
 
-    public void setGia(double gia) {
+    public void setGia(String gia) {
         this.gia = gia;
     }
 
-    public int getSoLuong() {
+    public String getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
     }
 
@@ -64,9 +56,6 @@ public class SanPham {
 
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
-    }
-    public static void main(String[] args) {
-        System.out.println("TÚ");
     }
 
 }

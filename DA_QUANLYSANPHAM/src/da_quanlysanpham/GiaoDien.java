@@ -426,6 +426,14 @@ public class GiaoDien extends javax.swing.JFrame {
             trangThai = "Cũ";
         }
         try {
+            list = qlsp.getListSP();
+            for (SanPham sp : list) {
+                if (sp.getMa().equals(ma)) {
+                    JOptionPane.showMessageDialog(this, "Mã sản phẩm " + ma + " đã tồn tại. Vui lòng nhập mã sản phẩm mới để thêm sản phẩm");
+                    return;
+                }
+            }
+
             if (txtMaSP.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Không được để trống mã");
                 return;
@@ -503,6 +511,13 @@ public class GiaoDien extends javax.swing.JFrame {
             trangThai = "Cũ";
         }
         try {
+            list = qlsp.getListSP();
+            for (SanPham sp : list) {
+                if (sp.getMa().equals(ma)) {
+                    JOptionPane.showMessageDialog(this, "Không được thay đổi mã sản phẩm");
+                    return;
+                }
+            }
             if (txtMaSP.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Không được để trống mã");
                 return;

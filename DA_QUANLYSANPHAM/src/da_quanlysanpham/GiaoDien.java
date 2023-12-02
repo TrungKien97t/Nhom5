@@ -57,6 +57,7 @@ public class GiaoDien extends javax.swing.JFrame {
         btnTimKiem = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -150,6 +151,13 @@ public class GiaoDien extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Nhập mã sản phẩm");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-update-23.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -158,13 +166,15 @@ public class GiaoDien extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTimKiem)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -176,7 +186,9 @@ public class GiaoDien extends javax.swing.JFrame {
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -394,7 +406,7 @@ public class GiaoDien extends javax.swing.JFrame {
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,17 +524,17 @@ public class GiaoDien extends javax.swing.JFrame {
         }
         try {
             if (txtMaSP.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không được để trống mã");
+                JOptionPane.showMessageDialog(this, "Sửa mã và không bỏ trống mã");
                 return;
             }
 
             if (txtTenSP.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không được để trống tên");
+                JOptionPane.showMessageDialog(this, "Sửa tên và không bỏ trống tên");
                 return;
 
             }
             if (txtGia.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không được để trống giá");
+                JOptionPane.showMessageDialog(this, "Sửa giá và không bỏ trống giá");
                 return;
             }
             Double giax = Double.valueOf(txtGia.getText());
@@ -531,7 +543,7 @@ public class GiaoDien extends javax.swing.JFrame {
                 return;
             }
             if (txtSoLuong.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không được để trống số lượng");
+                JOptionPane.showMessageDialog(this, "Sửa số lượng và không bỏ trống số lượng");
                 return;
             }
             Integer sluong = Integer.valueOf(txtSoLuong.getText());
@@ -580,6 +592,12 @@ public class GiaoDien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ArrayList<SanPham> sanPhamAll = qlsp.listSP;
+        loadData(sanPhamAll);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -621,6 +639,7 @@ public class GiaoDien extends javax.swing.JFrame {
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
